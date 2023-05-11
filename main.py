@@ -62,7 +62,10 @@ class Healer(Character):
 
 def start_training(char_class: Character) -> str:
     """Функция начала тренировки."""
-    print(char_class)
+    commands = {'attack': char_class.attack(),
+                'defence': char_class.defence(),
+                'special': char_class.special()}
+
     print('Потренируйся управлять своими навыками.')
     print('Введи одну из команд: attack — чтобы атаковать противника, '
           'defence — чтобы блокировать атаку противника или '
@@ -71,12 +74,7 @@ def start_training(char_class: Character) -> str:
     cmd: str = None
     while cmd != 'skip':
         cmd = input('Введи команду: ')
-        if cmd == 'attack':
-            print(char_class.attack())
-        if cmd == 'defence':
-            print(char_class.defence())
-        if cmd == 'special':
-            print(char_class.special())
+        print(commands[cmd])
     return 'Тренировка окончена.'
 
 
